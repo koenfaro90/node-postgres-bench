@@ -1,0 +1,18 @@
+{
+  "name": "node-postgres-bench",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "pg-8-11-2": "npm:pg@8.11.2",
+    "pg-performance-pull": "brianc/node-postgres#pull/3043/head",
+    "uuid": "^9.0.0"
+  }
+}
