@@ -12,7 +12,7 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "pg-8-11-2": "npm:pg@8.11.2",
-    "pg-performance-pull": "brianc/node-postgres#pull/3043/head",
+    "pg-8-11-3": "npm:pg@8.11.3",
     "uuid": "^9.0.0"
   }
 }

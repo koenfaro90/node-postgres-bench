@@ -20,31 +20,34 @@ class BaseGenerator {
 	}
 	async query(query, values) {
 		let start = +new Date();
-		//console.log(`> ${query}`);
+		//console.log(`> ${query.substr(0, 100)}`);
 		let result = await this.#client.query(query, values);
 		let end = +new Date();
-		//console.log(`< ${query}; ${end-start}ms`);
+		//console.log(`< ${query.substr(0, 100)}; ${end-start}ms`);
 		return result;
 	}
 	async create(tableName, fields) {
 		await this.query(`CREATE TABLE "${tableName}" (${_.map(fields, f => `${f.name} ${f.type}`).join(', ')})`);
 	}
-	async insert(tableName, fields, data, chunkSize = 1000) { 
+	async insert(tableName, fields, data, chunkSize = 10000) { 
 		let chunks = _.chunk(data, chunkSize);
 		for (let chunk of chunks) {
 			let valuePlaceHolders = [];
 			let values = [];
 			let i = 1;
 			for (let field of fields) {
-				let fieldData = [];
-				for (let row of chunk) {
-					fieldData.push(row[field.name]);
+				let fieldData = new Array(chunk.length)
+				for (let j = 0; j < chunk.length; j++) {
+					fieldData[j] = chunk[j][field.name];
 				}
 				valuePlaceHolders.push(`$${i}::${field.type}[]`);
 				values.push(fieldData);
 				i++;
 			}
+			let start = +new Date();
 			await this.query(`INSERT INTO "${tableName}" (${_.map(fields, f => f.name).join(', ')}) SELECT * FROM UNNEST (${valuePlaceHolders.join(', ')})`, values);
+			let end = +new Date();
+			//console.log('actual insert took', end - start);
 		}
 	}
 	async drop(tableName) {

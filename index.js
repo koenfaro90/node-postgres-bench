@@ -19,6 +19,6 @@ for (let caseName of cases) {
 	console.log(caseName, _.mapValues(measurementsByVersions, r => r[caseName].main));
 }
 
-/*console.log(util.inspect(measurementsByLib, {
+/*console.log(util.inspect(measurementsByVersions, {
 	depth: null
 }));*/
