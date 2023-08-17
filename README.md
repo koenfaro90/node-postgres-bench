@@ -43,3 +43,15 @@ $env:PGDATABASE = 'test';
 $env:PGUSER = 'postgres';
 $env:PGPASSWORD = 'password';
 ```
+
+Running a single case
+===
+```
+node .\lib\runner.js ValuesCase 8.11.3
+```
+
+Running all cases (compare)
+===
+```
+node index.js
+```
