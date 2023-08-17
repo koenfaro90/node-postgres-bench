@@ -8,26 +8,34 @@ docker exec node-postgres-dev /bin/bash -c "createdb -U postgres test"
 
 Depending on your env
 ===
+```
 set PGHOST=127.0.0.1
 set PGPORT=5432
 set PGDATABASE=test
 set PGUSER=postgres
 set PGPASSWORD=password
+```
 
+```
 export PGHOST=127.0.0.1
 export PGPORT=5432
 export PGDATABASE=test
 export PGUSER=postgres
 export PGPASSWORD=password
+```
 
+```
 Set-Variable -Name "PGHOST" -Value "127.0.0.1"
 Set-Variable -Name "PGPORT" -Value "5432"
 Set-Variable -Name "PGDATABASE" -Value "test"
 Set-Variable -Name "PGUSER" -Value "postgres"
 Set-Variable -Name "PGPASSWORD" -Value "password"
+```
 
+```
 $env:PGHOST = '127.0.0.1';
 $env:PGPORT = '5432';
 $env:PGDATABASE = 'test';
 $env:PGUSER = 'postgres';
 $env:PGPASSWORD = 'password';
+```
