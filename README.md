@@ -1,10 +1,14 @@
 Start docker
 ===
+```
 docker run --name node-postgres-dev -p 5432:5432 -d -e POSTGRES_PASSWORD=password postgres:15 -c ssl=on -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+```
 
 After it starts
 ===
+```
 docker exec node-postgres-dev /bin/bash -c "createdb -U postgres test"
+```
 
 Depending on your env
 ===
